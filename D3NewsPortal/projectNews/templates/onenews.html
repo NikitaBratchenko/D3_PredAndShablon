@@ -1,0 +1,21 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+News
+{% endblock title %}
+
+{% block content %}
+{% if onenews %}
+<h1>{{onenews.name}}</h1>
+<h3>{{onenews.dataCreation|date:"d M Y"}}</h3>
+<hr>
+<h3>Текст</h3>
+<h2>{{onenews.description|censor}}</h2>
+{% else %}
+   <h2>Такой новости нет</h2>
+{% endif %}
+
+{% endblock content %}
